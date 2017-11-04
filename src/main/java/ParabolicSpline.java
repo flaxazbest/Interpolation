@@ -38,23 +38,20 @@ public class ParabolicSpline {
     }
 
     public ParabolicSpline() {
-        this(1.0, 4.0, 4);
+        this(Parameters.A, Parameters.B, Parameters.parts);
     }
 
     public void calcSplines(Function f) {
-
         for (int i=0; i<parts; i++) {
             spline[i] = Lagrange.interpolate(f, dots[i], (dots[i] + dots[i+1]) / 2.0, dots[i+1]);
-            //System.out.println(spline[i]);
         }
-
     }
 
     public double getPhi(double z) {
         int i=0;
-        while (z < dots[i])
+        while (dots[i] <= z)
             i++;
-        return spline[i].calcY(z);
+        return spline[i-1].calcY(z);
     }
 
 }

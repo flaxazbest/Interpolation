@@ -21,13 +21,9 @@ public class FormController {
     private Function f;
     private GraphicsContext gc;
     private Point2D pp;
-    private ObservableList<Analyse> list;
 
     @FXML
     private Canvas canvas;
-
-    @FXML
-    private Button draw;
 
     @FXML
     TextField coordinatesX;
@@ -54,15 +50,15 @@ public class FormController {
     TableView<Analyse> table;
 
     public void onDraw(ActionEvent actionEvent) {
-        ParabolicSpline ps = new ParabolicSpline(1.0, 4.0, 3);
+        ParabolicSpline ps = new ParabolicSpline(Parameters.A, Parameters.B, Parameters.parts);
         ps.calcSplines(f);
         ps.draw(gc, w);
 
         LinkedList<Analyse> lList = new LinkedList<>();
 
         double h = 0.05;
-        double a = 1.0;
-        while (a < 4.0) {
+        double a = Parameters.A;
+        while (a < Parameters.B) {
             double z = f.getY(a);
             double phi = ps.getPhi(a);
             Analyse an = new Analyse(String.format("%.4f", a),String.format("%.4f", z), String.format("%.4f", phi), String.format("%.4f", z - phi), String.format("%.4f", Math.abs((z - phi)/z*100))+"%");
@@ -72,14 +68,14 @@ public class FormController {
     }
 
     public void initialize() {
-        w = new Window(1.0, 4.0, 0.0, 3.0, 800, 600);
+        w = new Window(Parameters.A, Parameters.B, 0.0, 3.0, 800, 600);
         f = new Function();
         gc = canvas.getGraphicsContext2D();
 
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(0,0,800, 600);
 
-        f.draw(gc, w, 1.0, 4.0);
+        f.draw(gc, w, Parameters.A, Parameters.B);
 
         xx.setCellValueFactory(
                 new PropertyValueFactory<Analyse,String>("x")

@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 
 public class Function {
     public double getY(double x) {
-        return Math.sqrt(x) + Math.cos(x*x);
+        return Math.sqrt(x) + Math.cos(x);
 //        return x*x;
     }
 
