@@ -31,7 +31,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <mainClass>ua.azbest.App</mainClass>
+                    <mainClass>ua.azbest.parabolic.App</mainClass>
                 </configuration>
             </plugin>
             <plugin>

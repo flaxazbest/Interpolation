@@ -1,3 +1,5 @@
+package parabolic;
+
 public class Lagrange {
 
     public static Parabola interpolate(Function f, double x0, double x1, double x2) {

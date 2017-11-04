@@ -1,12 +1,16 @@
-import javafx.scene.canvas.GraphicsContext;
+package addons;
 
 import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import newton.Parameters;
 
-public class Function {
-    public double getY(double x) {
-        return Math.sqrt(x) + Math.cos(x);
-//        return x*x;
+public abstract class F {
+
+    public abstract double getY(double x);
+
+    public double getPrime(double x) {
+        return (getY(x + Parameters.DELTA) - getY(x)) / Parameters.DELTA;
     }
 
     public void draw(GraphicsContext gc, Window window, double a, double b) {
@@ -33,4 +37,5 @@ public class Function {
         }
         gc.stroke();
     }
+
 }

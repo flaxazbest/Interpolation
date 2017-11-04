@@ -1,3 +1,6 @@
+package parabolic;
+
+import addons.Window;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -50,7 +53,7 @@ public class Parabola {
 
     @Override
     public String toString() {
-        return "Parabola{" +
+        return "parabolic.Parabola{" +
                 "a=" + Arrays.toString(a) +
                 '}';
     }

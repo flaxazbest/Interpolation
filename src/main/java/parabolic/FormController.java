@@ -1,10 +1,11 @@
-import javafx.collections.ObservableList;
+package parabolic;
+
+import addons.Window;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -12,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class FormController {

@@ -1,3 +1,5 @@
+package parabolic;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -6,7 +8,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
-        String fxmlFile = "form.fxml";
+        String fxmlFile = "../form.fxml";
 
         FXMLLoader loader = new FXMLLoader();
 
