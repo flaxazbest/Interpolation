@@ -17,16 +17,22 @@ public class Newton {
         intervals = new LinkedList<>();
 
         splitIntervals();
-        for (Interval i: intervals) {
-            System.out.println(i);
-            //System.out.println(solve(i, (i.a+i.b)/2));
-            System.out.println(solve(i, i.a+3*(i.b-i.a)/3));
+//        for (Interval i: intervals) {
+//            System.out.println(i);
+//            //System.out.println(solve(i, (i.a+i.b)/2));
+//            System.out.println(solve(i, i.a+3*(i.b-i.a)/3));
+//        }
+
+        for (int i=0; i<intervals.size(); i++) {
+            System.out.println(intervals.get(i));
+            System.out.println(solve(intervals.get(i), intervals.get(i).a+3*(intervals.get(i).b-intervals.get(i).a)/3));
         }
+
     }
 
     private void splitIntervals() {
-        double a = Parameters.A;
-        while (a < Parameters.B) {
+        double a = Parameters.I.a;
+        while (a < Parameters.I.b) {
             double l = f.getY(a);
             if (l == 0)
                 x.add(a);

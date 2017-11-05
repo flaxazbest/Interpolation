@@ -10,6 +10,10 @@ public class Interval {
         this.b = b;
     }
 
+    public Interval() {
+        this(0.0, 0.0);
+    }
+
     @Override
     public String toString() {
         return "(" + a + ";" + b + ")";
