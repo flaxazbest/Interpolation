@@ -59,6 +59,9 @@ public abstract class F {
         Point2D lPoint = window.realToScreen(new Point2D(a, 0));
         Point2D rPoint = window.realToScreen(new Point2D(b, 0));
         gc.strokeLine(lPoint.getX(), lPoint.getY(), rPoint.getX(), rPoint.getY());
+        Point2D tPoint = window.realToScreen(new Point2D(0, window.getMaxY()));
+        Point2D bPoint = window.realToScreen(new Point2D(0, window.getMinY()));
+        gc.strokeLine(tPoint.getX(), tPoint.getY(), bPoint.getX(), bPoint.getY());
     }
 
 }

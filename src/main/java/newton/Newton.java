@@ -3,6 +3,7 @@ package newton;
 import addons.F;
 import addons.Interval;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Newton {
@@ -22,12 +23,14 @@ public class Newton {
 //            //System.out.println(solve(i, (i.a+i.b)/2));
 //            System.out.println(solve(i, i.a+3*(i.b-i.a)/3));
 //        }
+    }
 
-        for (int i=0; i<intervals.size(); i++) {
-            System.out.println(intervals.get(i));
-            System.out.println(solve(intervals.get(i), intervals.get(i).a+3*(intervals.get(i).b-intervals.get(i).a)/3));
-        }
+    public int getRootsCount() {
+        return intervals.size();
+    }
 
+    public Interval getInterval(int no) {
+        return intervals.get(no);
     }
 
     private void splitIntervals() {
@@ -46,16 +49,24 @@ public class Newton {
         }
     }
 
-    private double solve(Interval interval, double x0) {
-        double x = x0 - f.getY(x0) / f.getPrime(x0);
-        int it = 0;
-        while (Math.abs( x - x0 ) > Parameters.EPS) {
-            x0 = x;
-            x = x0 - f.getY(x0) / f.getPrime(x0);
-            it++;
+    public LinkedList<RootEquation> solve(int firstApprox, double epsilon) {
+        LinkedList<RootEquation> arrayList = new LinkedList<>();
+        for (int i=0; i<intervals.size(); i++) {
+            //System.out.println(intervals.get(i));
+            double a = intervals.get(i).a;
+            double b = intervals.get(i).b;
+            double x0 = a + firstApprox*(b-a)/3;
+            double x = x0 - f.getY(x0) / f.getPrime(x0);
+            int it = 0;
+            while (Math.abs( x - x0 ) > epsilon) {
+                x0 = x;
+                x = x0 - f.getY(x0) / f.getPrime(x0);
+                it++;
+            }
+            RootEquation re = new RootEquation(x, it);
+            arrayList.add(re);
         }
-        System.err.println(it);
-        return x;
+        return arrayList;
     }
 
 
