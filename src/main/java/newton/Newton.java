@@ -2,6 +2,7 @@ package newton;
 
 import addons.F;
 import addons.Interval;
+import addons.Parameters;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

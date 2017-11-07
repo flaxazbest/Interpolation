@@ -2,6 +2,7 @@ package newton;
 
 import addons.Interval;
 import addons.Window;
+import addons.Parameters;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;

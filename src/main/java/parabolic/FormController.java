@@ -1,5 +1,6 @@
 package parabolic;
 
+import addons.Parameters;
 import addons.Window;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

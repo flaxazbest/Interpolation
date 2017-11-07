@@ -1,5 +1,6 @@
 package parabolic;
 
+import addons.Parameters;
 import addons.Window;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;

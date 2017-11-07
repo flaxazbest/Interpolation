@@ -16,6 +16,20 @@ public class Matrix {
     private final int MAXITER = 40;
     private int iters;
 
+    public Matrix(int size) {
+        this.size = size;
+        a = new double[size][size+1];
+        backup = new double[size][size+1];
+        for (int i=0; i<size; i++) {
+            for (int j=0; j<=size; j++)
+                backup[i][j] = a[i][j] = 0;
+        }
+    }
+
+    public void setElement(double el, int row, int col) {
+        backup[row][col] = a[row][col] = el;
+    }
+
     public Matrix() {
         size = 4;
         //a = new double[][]{{1, 1000, 0, 8, 3}, {10, 4, 4, 5, 2}, {10, 4, 4, 5, 2}, {2, 4, 6, 5, 3}};
