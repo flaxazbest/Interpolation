@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spline.SplineController">
+   <children>
+      <VBox layoutX="736.0" layoutY="5.0" prefHeight="609.0" prefWidth="100.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <Button fx:id="draw" mnemonicParsing="false" onAction="#onDraw" prefWidth="100.0" text="Draw" />
+            <TextField fx:id="coordinatesX" prefWidth="90.0" />
+            <TextField fx:id="coordinatesY" prefWidth="90.0" />
+         </children>
+      </VBox>
+      <TabPane layoutX="14.0" layoutY="10.0" prefHeight="632.0" prefWidth="810.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Graphic">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="610.0" prefWidth="809.0">
+                     <children>
+                        <Canvas fx:id="canvas" height="600.0" onMouseMoved="#move" width="800.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabTable" disable="true" text="Extended task">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>

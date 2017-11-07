@@ -6,10 +6,14 @@ import javafx.scene.paint.Color;
 
 public abstract class F {
 
+    private F prime = null;
+
     public abstract double getY(double x);
 
     public double getPrime(double x) {
-        return (getY(x + Parameters.DELTA) - getY(x)) / Parameters.DELTA;
+        if (prime == null)
+            return (getY(x + Parameters.DELTA) - getY(x)) / Parameters.DELTA;
+        return prime.getY(x);
     }
 
     public Interval getMinMaxY(Interval dx) {
@@ -28,15 +32,19 @@ public abstract class F {
         return i;
     }
 
-    public void draw(GraphicsContext gc, Window window, double a, double b) {
+    public void setPrime(F prime) {
+        this.prime = prime;
+    }
+
+    public void draw(GraphicsContext gc, Window window, double a, double b, Color color, int lineWidth) {
         int w = window.getW();
         double h = (b-a) / w;
 
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(0,0, window.getW(), window.getH());
 
-        gc.setLineWidth(3);
-        gc.setStroke(Color.BLUEVIOLET);
+        gc.setLineWidth(lineWidth);
+        gc.setStroke(color);
 
         Point2D point = new Point2D(0,0);
         double x = window.screenToReal(point).getX();
@@ -61,6 +69,14 @@ public abstract class F {
         Point2D tPoint = window.realToScreen(new Point2D(0, window.getMaxY()));
         Point2D bPoint = window.realToScreen(new Point2D(0, window.getMinY()));
         gc.strokeLine(tPoint.getX(), tPoint.getY(), bPoint.getX(), bPoint.getY());
+    }
+
+    public void draw(GraphicsContext gc, Window window, double a, double b, Color color) {
+        draw(gc, window, a, b, color, 2);
+    }
+
+    public void draw(GraphicsContext gc, Window window, double a, double b) {
+        this.draw(gc, window, a, b, Color.BLUEVIOLET);
     }
 
 }

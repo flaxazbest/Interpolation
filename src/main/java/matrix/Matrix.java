@@ -56,10 +56,16 @@ public class Matrix {
                 if (a[i][j] > 0 && j>0) System.out.print("+");
                 if (a[i][j] == 0) continue;
                 if ((a[i][j] - (int)a[i][j]) < EPS) {
-                    System.out.print((int)a[i][j] + "x"+(j+1));
+                    if (a[i][j] == 1)
+                        System.out.print("x"+(j));
+                    else
+                        System.out.print((int)a[i][j] + "x"+(j));
                 }
                 else {
-                    System.out.print(a[i][j] + "x"+(j+1));
+                    if (a[i][j] == 1)
+                        System.out.print("x"+(j));
+                    else
+                        System.out.print(a[i][j] + "x"+(j));
                 }
             }
             System.out.println("=" + a[i][size]);
@@ -328,5 +334,9 @@ public class Matrix {
             area.setText(sb.toString());
         }
 
+    }
+
+    public double[] getX() {
+        return x;
     }
 }

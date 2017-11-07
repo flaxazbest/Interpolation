@@ -1,6 +1,10 @@
 package spline;
 
 import addons.F;
+import addons.Window;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Cubic extends F {
     private double[] a;
@@ -44,5 +48,23 @@ public class Cubic extends F {
     @Override
     public double getY(double x) {
         return a[3]*x*x*x + a[2]*x*x + a[1]*x + a[0];
+    }
+
+    @Override
+    public void draw(GraphicsContext gc, Window w, double a, double b, Color c, int lineWidth) {
+
+        gc.setLineWidth(lineWidth);
+        gc.setStroke(c);
+
+        Point2D oldP = w.realToScreen(new Point2D(a, getY(a)));
+        Point2D p;
+
+        double h = 0.003;
+        while (a < b) {
+            a += h;
+            p = w.realToScreen(new Point2D(a, getY(a)));
+            gc.strokeLine(oldP.getX(),oldP.getY(), p.getX(), p.getY());
+            oldP = p;
+        }
     }
 }
