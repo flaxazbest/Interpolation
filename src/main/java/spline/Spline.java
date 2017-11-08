@@ -40,6 +40,7 @@ public class Spline {
         //second prime = 0 (global)
         matrix.setElement(2.0, 0, 2);
         matrix.setElement(6*x, 0, 3);
+        //matrix.setElement(-0.5/Math.sqrt(x*x*x),0, 4*n);
 
         //first prime
         matrix.setElement(1, 1, 1);
@@ -49,7 +50,7 @@ public class Spline {
 
         for (int i=0; i<parts; i++) {
 
-            if (i >0 && i < parts-1) {
+            if (i >0 /*&& i < parts-1*/) {
                 //proxima2
                 matrix.setElement(6 * x, i * 4, (i - 1) * 4 + 3);
                 matrix.setElement(2, i * 4, (i - 1) * 4 + 2);
@@ -78,23 +79,24 @@ public class Spline {
             matrix.setElement(1, i*4+3 ,i*4);
             matrix.setElement(table[i+1].getY(), i*4+3, 4*n);
         }
-
+//*
         //second prime = 0 (global)
-        matrix.setElement(2.0, (parts-1)*4, (parts-1)*4+2);
-        matrix.setElement(6*x, (parts-1)*4, (parts-1)*4+3);
+       // matrix.setElement(2.0, (parts-1)*4, (parts-1)*4+2);
+        //matrix.setElement(6*x, (parts-1)*4, (parts-1)*4+3);
+        matrix.setElement(-0.5/Math.sqrt(x*x*x),(parts-1)*4, 4*n);
 
         //first prime
-        matrix.setElement(1, (parts-1)*4+1, (parts-1)*4+1);
-        matrix.setElement(2*x, (parts-1)*4+1, (parts-1)*4+2);
-        matrix.setElement(3*x*x, (parts-1)*4+1, (parts-1)*4+3);
+        //matrix.setElement(1, (parts-1)*4+1, (parts-1)*4+1);
+        //matrix.setElement(2*x, (parts-1)*4+1, (parts-1)*4+2);
+        //matrix.setElement(3*x*x, (parts-1)*4+1, (parts-1)*4+3);
         matrix.setElement(function.getPrime(x), (parts-1)*4+1, 4*n);
+//*/
 
-        //matrix.print();
-        try {
-            matrix.solveGaussWithMainElement();
-        } catch (BadSLAR badSLAR) {
-            badSLAR.printStackTrace();
-        }
+        matrix.print();
+
+        System.out.println("\n\n");
+
+        matrix.solveGauss();
         matrix.printInMatrixMode();
 
         double[] r = matrix.getX();
