@@ -10,8 +10,12 @@ public class Interval {
         this.b = b;
     }
 
-    public Interval() {
+    Interval() {
         this(0.0, 0.0);
+    }
+
+    public double getMiddle() {
+        return (a + b) / 2.0;
     }
 
     @Override

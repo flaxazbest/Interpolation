@@ -36,6 +36,18 @@ public abstract class F {
         this.prime = prime;
     }
 
+    public double getMaxAbsoluteDerivativeValueAtInterval(Interval i) {
+        double x = i.a;
+        double y;
+        double max = Math.abs(getPrime(x));
+        while (x < i.b) {
+            x += Parameters.DELTA;
+            y = Math.abs(getPrime(x));
+            if (y > max) max = y;
+        }
+        return max;
+    }
+
     public void draw(GraphicsContext gc, Window window, double a, double b, Color color, int lineWidth) {
         int w = window.getW();
         double h = (b-a) / w;
