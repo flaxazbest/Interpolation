@@ -29,7 +29,7 @@ public class SplineController {
     TextField coordinatesY;
 
     public void onDraw(ActionEvent actionEvent) {
-        Spline s = new Spline(f);
+        SplineP s = new SplineP(f, Parameters.parts+1);
         s.draw(gc, w);
     }
 
