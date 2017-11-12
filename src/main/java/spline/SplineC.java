@@ -1,14 +1,13 @@
 package spline;
 
 import addons.F;
+import addons.Parameters;
 import addons.Window;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import static addons.Parameters.A;
-import static addons.Parameters.B;
-import static addons.Parameters.parts;
+import static addons.Parameters.*;
 
 public class SplineC {
 
@@ -85,17 +84,34 @@ public class SplineC {
             d[j] = (b[j+1]+b[j]-2*delta[j])/(h[j]*h[j]);
             c[j] = 2*(delta[j]-b[j])/h[j]-(b[j+1]-delta[j])/h[j];
 
+            /*              -
+            double aa = a[j] - b[j]*table[j].getX() + c[j] * Math.pow(table[j].getX(), 2)
+                             - d[j] * Math.pow(table[j].getX(), 3);
+            double bb = b[j] - 2 * c[j] * table[j].getX() + d[j] * Math.pow(table[j].getX(), 2);
+            double cc = c[j] - d[j] * table[j].getX();
+            double dd = d[j];
+
+             //*/
+
             try {
+                //*
                 splines[j].setKoeficient(a[j], 0);
                 splines[j].setKoeficient(b[j], 1);
                 splines[j].setKoeficient(c[j], 2);
                 splines[j].setKoeficient(d[j], 3);
+                //*/
+
+                /*
+                splines[j].setKoeficient(aa, 0);
+                splines[j].setKoeficient(bb, 1);
+                splines[j].setKoeficient(cc, 2);
+                splines[j].setKoeficient(dd, 3);
+                //*/
+
             } catch (WrongCoeficientException e) {
                 e.printStackTrace();
             }
         }
-
-
     }
 
     private void solveTriDiag(double[][] TDM, double[] F)
@@ -117,7 +133,7 @@ public class SplineC {
         }
     }
 
-    public double interpolate(double x)
+/*    public double interpolate(double x)
     {
         //double result;
         int i=0;
@@ -127,11 +143,18 @@ public class SplineC {
         i--;
         return splines[i].getY(x);
 
-    }
+    }*/
 
     public void draw(GraphicsContext gc, Window w) {
         for (int i=0; i<parts; i++) {
-            splines[i].draw(gc, w, table[i].getX(), table[i+1].getX(), Color.BROWN, 1);
+            splines[i].draw(gc, w, table[i].getX(), table[i+1].getX(), Parameters.colors[0], 1, table[i].getX());
+        }
+
+        gc.setFill(colors[2]);
+        for (int i=0; i<=parts; i++) {
+            Point2D p = w.realToScreen(table[i]);
+            gc.fillOval(p.getX()-Parameters.pointRadius/2, p.getY()-Parameters.pointRadius/2,
+                    Parameters.pointRadius, Parameters.pointRadius);
         }
     }
 

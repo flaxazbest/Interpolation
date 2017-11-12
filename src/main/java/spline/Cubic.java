@@ -47,22 +47,33 @@ public class Cubic extends F {
 
     @Override
     public double getY(double x) {
-        return a[3]*x*x*x + a[2]*x*x + a[1]*x + a[0];
+        return getY(x, 0.0);
+//        final double d = 1.;
+//        return a[3]*x*x*x + a[2]*x*x + a[1]*x + a[0];
+//        return a[3]*(x-d)*(x-d)*(x-d) + a[2]*(x-d)*(x-d) + a[1]*(x-d) + a[0];
+    }
+
+    public double getY(double x, double delta) {
+        return a[3]*(x-delta)*(x-delta)*(x-delta) + a[2]*(x-delta)*(x-delta) + a[1]*(x-delta) + a[0];
     }
 
     @Override
     public void draw(GraphicsContext gc, Window w, double a, double b, Color c, int lineWidth) {
+        this.draw(gc, w, a, b, c, lineWidth, 0.0);
+    }
+
+    public void draw(GraphicsContext gc, Window w, double a, double b, Color c, int lineWidth, double delta) {
 
         gc.setLineWidth(lineWidth);
         gc.setStroke(c);
 
-        Point2D oldP = w.realToScreen(new Point2D(a, getY(a)));
+        Point2D oldP = w.realToScreen(new Point2D(a, getY(a, delta)));
         Point2D p;
 
         double h = 0.003;
         while (a < b) {
             a += h;
-            p = w.realToScreen(new Point2D(a, getY(a)));
+            p = w.realToScreen(new Point2D(a, getY(a, delta)));
             gc.strokeLine(oldP.getX(),oldP.getY(), p.getX(), p.getY());
             oldP = p;
         }

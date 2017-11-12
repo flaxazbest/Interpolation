@@ -29,7 +29,7 @@ public class SplineController {
     TextField coordinatesY;
 
     public void onDraw(ActionEvent actionEvent) {
-        SplineP s = new SplineP(f, Parameters.parts+1);
+        SplineC s = new SplineC(f, Parameters.parts+1);
         s.draw(gc, w);
     }
 
@@ -40,17 +40,19 @@ public class SplineController {
     }
 
     public void initialize() {
-        w = new Window(Parameters.A, Parameters.B, 0.0, 3.0, (int)canvas.getWidth(), (int)canvas.getHeight());
+        w = new Window(Parameters.A, Parameters.B, -2.0, 3.0, (int)canvas.getWidth(), (int)canvas.getHeight());
         f = new F() {
             @Override
             public double getY(double x) {
                 return Math.sqrt(x) + Math.cos(x);
+//                return Math.sin(4 * x);
             }
         };
         f.setPrime(new F() {
             @Override
             public double getY(double x) {
                 return 0.5/Math.sqrt(x) - Math.sin(x);
+//                return 4 * Math.cos(4 * x);
             }
         });
 

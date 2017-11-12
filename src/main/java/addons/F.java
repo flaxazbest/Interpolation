@@ -76,7 +76,7 @@ public abstract class F {
     }
 
     public void draw(GraphicsContext gc, Window window, double a, double b) {
-        this.draw(gc, window, a, b, Color.BLUEVIOLET);
+        this.draw(gc, window, a, b, Color.DARKCYAN);
     }
 
 }
