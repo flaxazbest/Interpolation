@@ -3,11 +3,13 @@ package spline;
 import addons.F;
 import addons.Parameters;
 import addons.Window;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -28,8 +30,21 @@ public class SplineController {
     @FXML
     TextField coordinatesY;
 
+    @FXML
+    TextField parts;
+
+    @FXML
+    Slider slider;
+
     public void onDraw(ActionEvent actionEvent) {
-        SplineC s = new SplineC(f, Parameters.parts+1);
+        gc = canvas.getGraphicsContext2D();
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillRect(0,0,w.getW(), w.getH());
+        f.draw(gc, w, Parameters.A, Parameters.B, Color.DARKBLUE);
+
+        int n = (int)slider.getValue() + 1;
+//        SplineC s = new SplineC(f, Parameters.parts+1);
+        SplineC s = new SplineC(f, n);
         s.draw(gc, w);
     }
 
@@ -40,7 +55,15 @@ public class SplineController {
     }
 
     public void initialize() {
-        w = new Window(Parameters.A, Parameters.B, -2.0, 3.0, (int)canvas.getWidth(), (int)canvas.getHeight());
+
+        parts.textProperty().bind(
+                Bindings.format(
+                        "%.0f",
+                        slider.valueProperty()
+                )
+        );
+
+        w = new Window(Parameters.A, Parameters.B, 0.5, 2.0, (int)canvas.getWidth(), (int)canvas.getHeight());
         f = new F() {
             @Override
             public double getY(double x) {
@@ -57,7 +80,6 @@ public class SplineController {
         });
 
         gc = canvas.getGraphicsContext2D();
-
         gc.setFill(Color.LIGHTGRAY);
         gc.fillRect(0,0,w.getW(), w.getH());
         f.draw(gc, w, Parameters.A, Parameters.B, Color.DARKBLUE);

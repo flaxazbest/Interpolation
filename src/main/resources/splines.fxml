@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spline.SplineController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spline.SplineController">
    <children>
       <VBox layoutX="736.0" layoutY="5.0" prefHeight="609.0" prefWidth="100.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
             <Button fx:id="draw" mnemonicParsing="false" onAction="#onDraw" prefWidth="100.0" text="Draw" />
             <TextField fx:id="coordinatesX" prefWidth="90.0" />
             <TextField fx:id="coordinatesY" prefWidth="90.0" />
+            <TextField fx:id="parts" editable="false">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <Slider fx:id="slider" blockIncrement="1.0" majorTickUnit="5.0" max="50.0" min="2.0" minorTickCount="1" showTickMarks="true" value="6.0" />
          </children>
       </VBox>
       <TabPane layoutX="14.0" layoutY="10.0" prefHeight="632.0" prefWidth="810.0" tabClosingPolicy="UNAVAILABLE">

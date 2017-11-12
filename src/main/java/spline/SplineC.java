@@ -146,14 +146,17 @@ public class SplineC {
     }*/
 
     public void draw(GraphicsContext gc, Window w) {
-        for (int i=0; i<parts; i++) {
+        for (int i=0; i<n-1; i++) {
             splines[i].draw(gc, w, table[i].getX(), table[i+1].getX(), Parameters.colors[0], 1, table[i].getX());
         }
 
         gc.setFill(colors[2]);
-        for (int i=0; i<=parts; i++) {
+        gc.setStroke(colors[7]);
+        for (int i=0; i<n; i++) {
             Point2D p = w.realToScreen(table[i]);
             gc.fillOval(p.getX()-Parameters.pointRadius/2, p.getY()-Parameters.pointRadius/2,
+                    Parameters.pointRadius, Parameters.pointRadius);
+            gc.strokeOval(p.getX()-Parameters.pointRadius/2, p.getY()-Parameters.pointRadius/2,
                     Parameters.pointRadius, Parameters.pointRadius);
         }
     }
