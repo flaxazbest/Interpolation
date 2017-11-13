@@ -48,9 +48,6 @@ public class Cubic extends F {
     @Override
     public double getY(double x) {
         return getY(x, 0.0);
-//        final double d = 1.;
-//        return a[3]*x*x*x + a[2]*x*x + a[1]*x + a[0];
-//        return a[3]*(x-d)*(x-d)*(x-d) + a[2]*(x-d)*(x-d) + a[1]*(x-d) + a[0];
     }
 
     public double getY(double x, double delta) {

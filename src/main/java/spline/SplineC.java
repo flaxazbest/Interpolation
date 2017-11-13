@@ -84,30 +84,18 @@ public class SplineC {
             d[j] = (b[j+1]+b[j]-2*delta[j])/(h[j]*h[j]);
             c[j] = 2*(delta[j]-b[j])/h[j]-(b[j+1]-delta[j])/h[j];
 
-            /*              -
+            //*              -
             double aa = a[j] - b[j]*table[j].getX() + c[j] * Math.pow(table[j].getX(), 2)
                              - d[j] * Math.pow(table[j].getX(), 3);
-            double bb = b[j] - 2 * c[j] * table[j].getX() + d[j] * Math.pow(table[j].getX(), 2);
-            double cc = c[j] - d[j] * table[j].getX();
+            double bb = b[j] - 2 * c[j] * table[j].getX() + 3 * d[j] * Math.pow(table[j].getX(), 2);
+            double cc = c[j] - 3 * d[j] * table[j].getX();
             double dd = d[j];
 
-             //*/
-
             try {
-                //*
-                splines[j].setKoeficient(a[j], 0);
-                splines[j].setKoeficient(b[j], 1);
-                splines[j].setKoeficient(c[j], 2);
-                splines[j].setKoeficient(d[j], 3);
-                //*/
-
-                /*
                 splines[j].setKoeficient(aa, 0);
                 splines[j].setKoeficient(bb, 1);
                 splines[j].setKoeficient(cc, 2);
                 splines[j].setKoeficient(dd, 3);
-                //*/
-
             } catch (WrongCoeficientException e) {
                 e.printStackTrace();
             }
@@ -133,21 +121,9 @@ public class SplineC {
         }
     }
 
-/*    public double interpolate(double x)
-    {
-        //double result;
-        int i=0;
-
-        while (table[i].getX() < x)
-            i++;
-        i--;
-        return splines[i].getY(x);
-
-    }*/
-
     public void draw(GraphicsContext gc, Window w) {
         for (int i=0; i<n-1; i++) {
-            splines[i].draw(gc, w, table[i].getX(), table[i+1].getX(), Parameters.colors[0], 1, table[i].getX());
+            splines[i].draw(gc, w, table[i].getX(), table[i+1].getX(), Parameters.colors[0], 1);
         }
 
         gc.setFill(colors[2]);

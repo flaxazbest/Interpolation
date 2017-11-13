@@ -4,6 +4,12 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
+import javax.naming.NameNotFoundException;
+
+import static java.lang.Double.NaN;
+
+//import static java.lang.Float.NaN;
+
 public abstract class F {
 
     private F prime = null;
@@ -14,6 +20,10 @@ public abstract class F {
         if (prime == null)
             return (getY(x + Parameters.DELTA) - getY(x)) / Parameters.DELTA;
         return prime.getY(x);
+    }
+
+    public F getPrime() {
+        return prime;
     }
 
     public Interval getMinMaxY(Interval dx) {
@@ -69,7 +79,8 @@ public abstract class F {
             x = window.screenToReal(point).getX();
             y = getY(x);
             sPoint = window.realToScreen(new Point2D(x, y));
-            gc.lineTo(i, sPoint.getY());
+            if (!(String.valueOf(sPoint.getY()).equals("NaN")))
+                gc.lineTo(i, sPoint.getY());
         }
         gc.stroke();
 
