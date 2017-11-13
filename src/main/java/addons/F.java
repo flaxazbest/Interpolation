@@ -6,7 +6,9 @@ import javafx.scene.paint.Color;
 
 import javax.naming.NameNotFoundException;
 
+import static java.lang.Double.NEGATIVE_INFINITY;
 import static java.lang.Double.NaN;
+import static java.lang.Double.POSITIVE_INFINITY;
 
 //import static java.lang.Float.NaN;
 
@@ -79,7 +81,7 @@ public abstract class F {
             x = window.screenToReal(point).getX();
             y = getY(x);
             sPoint = window.realToScreen(new Point2D(x, y));
-            if (!(String.valueOf(sPoint.getY()).equals("NaN")))
+            if (!(String.valueOf(sPoint.getY()).equals("NaN") || y == POSITIVE_INFINITY || y == NEGATIVE_INFINITY))
                 gc.lineTo(i, sPoint.getY());
         }
         gc.stroke();
