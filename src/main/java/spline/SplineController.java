@@ -68,6 +68,7 @@ public class SplineController {
         s.drawSplines2(gcG, wG);
         s.drawSplines3(gcG, wG);
 
+
     }
 
     public void move(MouseEvent mouseEvent) {
