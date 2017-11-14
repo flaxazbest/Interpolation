@@ -10,6 +10,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -17,12 +18,16 @@ import javafx.scene.paint.Color;
 public class SplineController {
 
     private Window w;
+    private Window wG;
     private F f;
     private GraphicsContext gc;
+    private GraphicsContext gcG;
     private Point2D pp;
 
     @FXML
     private Canvas canvas;
+    @FXML
+    private Canvas canvasG;
 
     @FXML
     TextField coordinatesX;
@@ -36,6 +41,9 @@ public class SplineController {
     @FXML
     Slider slider;
 
+    @FXML
+    Tab tabG;
+
     public void onDraw(ActionEvent actionEvent) {
         gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.LIGHTGRAY);
@@ -46,6 +54,17 @@ public class SplineController {
 //        SplineC s = new SplineC(f, Parameters.parts+1);
         SplineC s = new SplineC(f, n);
         s.draw(gc, w);
+
+        tabG.setDisable(false);
+        gcG = canvasG.getGraphicsContext2D();
+        wG = new Window(Parameters.A, Parameters.B, -5.00, 5.0, (int)canvasG.getWidth(), (int)canvasG.getHeight());
+        gcG.setFill(Color.LIGHTGRAY);
+        gcG.fillRect(0,0,canvasG.getWidth(),canvasG.getHeight());
+
+        s.drawSplines1(gcG, wG);
+        s.drawSplines2(gcG, wG);
+//        s.drawSplines3(gcG, wG);
+
     }
 
     public void move(MouseEvent mouseEvent) {
@@ -62,6 +81,8 @@ public class SplineController {
                         slider.valueProperty()
                 )
         );
+
+        slider.setValue(Parameters.parts);
 
         w = new Window(Parameters.A, Parameters.B, 0.5, 2.0, (int)canvas.getWidth(), (int)canvas.getHeight());
         f = new F() {

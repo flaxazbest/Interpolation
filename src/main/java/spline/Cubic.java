@@ -43,6 +43,31 @@ public class Cubic extends F {
         a[1] = a1;
         a[2] = a2;
         a[3] = a3;
+
+        F d3 = new F() {
+            @Override
+            public double getY(double x) {
+                return 6*a3;
+            }
+        };
+
+        F d2 = new F() {
+            @Override
+            public double getY(double x) {
+                return 6*a3*x + 2*a2;
+            }
+        };
+        d2.setPrime(d3);
+
+        F d1 = new F() {
+            @Override
+            public double getY(double x) {
+                return 3*a3*x*x + 2*a2*x + a1;
+            }
+        };
+        d1.setPrime(d2);
+
+        setPrime(d1);
     }
 
     @Override

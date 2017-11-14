@@ -75,9 +75,9 @@ public class SplineC {
         solveTriDiag(TriDiagMatrix,f);
 
         splines = new Cubic[n-1];
-        for (int j=0; j<n-1; j++) {
-            splines[j] = new Cubic();
-        }
+//        for (int j=0; j<n-1; j++) {
+//            splines[j] = new Cubic();
+//        }
 
         for (int j=0; j<n-1; j++)
         {
@@ -91,14 +91,16 @@ public class SplineC {
             double cc = c[j] - 3 * d[j] * table[j].getX();
             double dd = d[j];
 
-            try {
-                splines[j].setKoeficient(aa, 0);
-                splines[j].setKoeficient(bb, 1);
-                splines[j].setKoeficient(cc, 2);
-                splines[j].setKoeficient(dd, 3);
-            } catch (WrongCoeficientException e) {
-                e.printStackTrace();
-            }
+            splines[j] = new Cubic(aa, bb, cc, dd);
+
+//            try {
+//                splines[j].setKoeficient(aa, 0);
+//                splines[j].setKoeficient(bb, 1);
+//                splines[j].setKoeficient(cc, 2);
+//                splines[j].setKoeficient(dd, 3);
+//            } catch (WrongCoeficientException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 
@@ -134,6 +136,24 @@ public class SplineC {
                     Parameters.pointRadius, Parameters.pointRadius);
             gc.strokeOval(p.getX()-Parameters.pointRadius/2, p.getY()-Parameters.pointRadius/2,
                     Parameters.pointRadius, Parameters.pointRadius);
+        }
+    }
+
+    public void drawSplines1(GraphicsContext gc, Window w) {
+        for (int i=0; i<n-1; i++) {
+            splines[i].getPrime().draw(gc, w, table[i].getX(), table[i+1].getX(), Parameters.colors[1], 1);
+        }
+    }
+
+    public void drawSplines2(GraphicsContext gc, Window w) {
+        for (int i=0; i<n-1; i++) {
+            splines[i].getPrime().getPrime().draw(gc, w, table[i].getX(), table[i+1].getX(), Parameters.colors[i], 1);
+        }
+    }
+
+    public void drawSplines3(GraphicsContext gc, Window w) {
+        for (int i=0; i<n-1; i++) {
+            splines[i].getPrime().getPrime().getPrime().draw(gc, w, table[i].getX(), table[i+1].getX(), Parameters.colors[i], 1);
         }
     }
 

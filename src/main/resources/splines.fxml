@@ -36,9 +36,12 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="tabTable" disable="true" text="Extended task">
+          <Tab fx:id="tabG" disable="true" text="Extended task">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+                     <children>
+                        <Canvas fx:id="canvasG" height="590.0" layoutX="5.0" layoutY="5.0" width="790.0" />
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
