@@ -49,12 +49,48 @@ public class Cubic extends F {
             public double getY(double x) {
                 return 6*a3;
             }
+
+            @Override
+            public void draw(GraphicsContext gc, Window w, double a, double b, Color c, int lineWidth) {
+
+                gc.setLineWidth(lineWidth);
+                gc.setStroke(c);
+
+                Point2D oldP = w.realToScreen(new Point2D(a, getY(a)));
+                Point2D p;
+
+                double h = 0.003;
+                while (a < b) {
+                    a += h;
+                    p = w.realToScreen(new Point2D(a, getY(a)));
+                    gc.strokeLine(oldP.getX(),oldP.getY(), p.getX(), p.getY());
+                    oldP = p;
+                }
+            }
         };
 
         F d2 = new F() {
             @Override
             public double getY(double x) {
                 return 6*a3*x + 2*a2;
+            }
+
+            @Override
+            public void draw(GraphicsContext gc, Window w, double a, double b, Color c, int lineWidth) {
+
+                gc.setLineWidth(lineWidth);
+                gc.setStroke(c);
+
+                Point2D oldP = w.realToScreen(new Point2D(a, getY(a)));
+                Point2D p;
+
+                double h = 0.003;
+                while (a < b) {
+                    a += h;
+                    p = w.realToScreen(new Point2D(a, getY(a)));
+                    gc.strokeLine(oldP.getX(),oldP.getY(), p.getX(), p.getY());
+                    oldP = p;
+                }
             }
         };
         d2.setPrime(d3);
@@ -63,6 +99,24 @@ public class Cubic extends F {
             @Override
             public double getY(double x) {
                 return 3*a3*x*x + 2*a2*x + a1;
+            }
+
+            @Override
+            public void draw(GraphicsContext gc, Window w, double a, double b, Color c, int lineWidth) {
+
+                gc.setLineWidth(lineWidth);
+                gc.setStroke(c);
+
+                Point2D oldP = w.realToScreen(new Point2D(a, getY(a)));
+                Point2D p;
+
+                double h = 0.003;
+                while (a < b) {
+                    a += h;
+                    p = w.realToScreen(new Point2D(a, getY(a)));
+                    gc.strokeLine(oldP.getX(),oldP.getY(), p.getX(), p.getY());
+                    oldP = p;
+                }
             }
         };
         d1.setPrime(d2);

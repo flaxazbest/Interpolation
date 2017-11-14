@@ -14,6 +14,10 @@ public class Interval {
         this(0.0, 0.0);
     }
 
+    public double length() {
+        return Math.abs(b - a);
+    }
+
     public double getMiddle() {
         return (a + b) / 2.0;
     }

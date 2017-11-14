@@ -62,10 +62,6 @@ public abstract class F {
 
     public void draw(GraphicsContext gc, Window window, double a, double b, Color color, int lineWidth) {
         int w = window.getW();
-        double h = (b-a) / w;
-
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRect(0,0, window.getW(), window.getH());
 
         gc.setLineWidth(lineWidth);
         gc.setStroke(color);
@@ -74,15 +70,18 @@ public abstract class F {
         double x = window.screenToReal(point).getX();
         double y = getY(x);
         Point2D sPoint = window.realToScreen(new Point2D(x, y));
-        gc.moveTo(sPoint.getX(), sPoint.getY());
+
+        Point2D ePoint;
 
         for (int i=1; i<w; i++) {
             point = new Point2D(i,0);
             x = window.screenToReal(point).getX();
             y = getY(x);
-            sPoint = window.realToScreen(new Point2D(x, y));
-            if (!(String.valueOf(sPoint.getY()).equals("NaN") || y == POSITIVE_INFINITY || y == NEGATIVE_INFINITY))
-                gc.lineTo(i, sPoint.getY());
+            ePoint = window.realToScreen(new Point2D(x, y));
+            if (!(String.valueOf(sPoint.getY()).equals("NaN") || y == POSITIVE_INFINITY || y == NEGATIVE_INFINITY)) {
+                gc.strokeLine(sPoint.getX(), sPoint.getY(), ePoint.getX(), ePoint.getY());
+                sPoint = ePoint;
+            }
         }
         gc.stroke();
 

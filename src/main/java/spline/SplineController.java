@@ -1,6 +1,7 @@
 package spline;
 
 import addons.F;
+import addons.Interval;
 import addons.Parameters;
 import addons.Window;
 import javafx.beans.binding.Bindings;
@@ -46,24 +47,26 @@ public class SplineController {
 
     public void onDraw(ActionEvent actionEvent) {
         gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.LIGHTGRAY);
+        gc.setFill(Parameters.background);
         gc.fillRect(0,0,w.getW(), w.getH());
-        f.draw(gc, w, Parameters.A, Parameters.B, Color.DARKBLUE);
+        f.draw(gc, w, Parameters.A, Parameters.B, Color.LIGHTGREEN, 3);
 
         int n = (int)slider.getValue() + 1;
 //        SplineC s = new SplineC(f, Parameters.parts+1);
         SplineC s = new SplineC(f, n);
+        s.drawVerticalLines(gc, w);
         s.draw(gc, w);
 
         tabG.setDisable(false);
         gcG = canvasG.getGraphicsContext2D();
-        wG = new Window(Parameters.A, Parameters.B, -5.00, 5.0, (int)canvasG.getWidth(), (int)canvasG.getHeight());
-        gcG.setFill(Color.LIGHTGRAY);
+        wG = new Window(Parameters.A, Parameters.B, -6.00, 5.5, (int)canvasG.getWidth(), (int)canvasG.getHeight());
+        gcG.setFill(Color.DARKGREY);
         gcG.fillRect(0,0,canvasG.getWidth(),canvasG.getHeight());
 
+        s.drawVerticalLines(gcG, wG);
         s.drawSplines1(gcG, wG);
         s.drawSplines2(gcG, wG);
-//        s.drawSplines3(gcG, wG);
+        s.drawSplines3(gcG, wG);
 
     }
 
@@ -83,8 +86,6 @@ public class SplineController {
         );
 
         slider.setValue(Parameters.parts);
-
-        w = new Window(Parameters.A, Parameters.B, 0.5, 2.0, (int)canvas.getWidth(), (int)canvas.getHeight());
         f = new F() {
             @Override
             public double getY(double x) {
@@ -99,10 +100,20 @@ public class SplineController {
 //                return 4 * Math.cos(4 * x);
             }
         });
+        Interval interval = f.getMinMaxY(new Interval(Parameters.A, Parameters.B));
+        double delta = interval.length() * 0.1;
+        w = new Window(Parameters.A, Parameters.B, interval.a-delta, interval.b+delta, (int)canvas.getWidth(), (int)canvas.getHeight());
+
 
         gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.LIGHTGRAY);
+        gc.setFill(Parameters.background);
         gc.fillRect(0,0,w.getW(), w.getH());
-        f.draw(gc, w, Parameters.A, Parameters.B, Color.DARKBLUE);
+        f.draw(gc, w, Parameters.A, Parameters.B, Color.LIGHTGREEN, 3);
+    }
+
+    public void moveG(MouseEvent mouseEvent) {
+        pp = wG.screenToReal(mouseEvent.getX(), mouseEvent.getY());
+        coordinatesX.setText(String.format("X: %.4f", pp.getX()));
+        coordinatesY.setText(String.format("Y: %.4f", pp.getY()));
     }
 }
