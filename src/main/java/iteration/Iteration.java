@@ -49,6 +49,24 @@ public class Iteration {
         return xi;
     }
 
+    public double clarifyR(Interval interval, int num)
+    throws MethodDivergenceException{
+        if (g.getMaxAbsoluteDerivativeValueAtInterval(interval) >= 1)
+            throw new MethodDivergenceException();
+
+        System.out.println("F(" + num + "):\t" + interval);
+
+        if (Math.abs(interval.b - interval.a) < Parameters.EPS)
+            return interval.getMiddle();
+
+        double xi = clarifyR(new Interval(interval.b, g.getY(interval.b)), num+1);
+
+        System.out.println("F(" + num + ") = \t" + xi);
+
+        return xi;
+
+    }
+
     public static void main(String[] args) {
 
 /*
@@ -86,7 +104,8 @@ public class Iteration {
 
         for (Interval interval: it.getIntervals()) {
             try {
-                it.clarify(interval);
+                it.clarifyR(interval, 1);
+                System.out.println("\n\n");
             } catch (MethodDivergenceException e) {
                 System.err.println("no conditions on " + interval);
             }

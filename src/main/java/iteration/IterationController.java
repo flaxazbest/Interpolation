@@ -71,6 +71,7 @@ public class IterationController {
             showInterval(gcD, dW, interval);
             try {
                 it.clarify(interval);
+                it.clarifyR(interval, 1);
             } catch (MethodDivergenceException e) {
                 System.err.println("Wrong condition in interval " + interval);;
             }
