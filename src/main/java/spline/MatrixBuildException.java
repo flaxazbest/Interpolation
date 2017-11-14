@@ -1,4 +1,4 @@
 package spline;
 
-public class MatrixBuildException extends Exception {
+class MatrixBuildException extends Exception {
 }

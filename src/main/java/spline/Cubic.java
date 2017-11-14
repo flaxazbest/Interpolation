@@ -9,18 +9,8 @@ import javafx.scene.paint.Color;
 public class Cubic extends F {
     private double[] a;
 
-    public Cubic() {
+    private Cubic() {
         a = new double[4];
-    }
-
-    public Cubic(double[] a) {
-        this.a = a;
-    }
-
-    double getKoeficient(int i) throws WrongCoeficientException {
-        if (a == null || i < 0 || i>3)
-            throw new WrongCoeficientException();
-        return a[i];
     }
 
     void setKoeficient(double x, int i) throws WrongCoeficientException {
@@ -37,7 +27,7 @@ public class Cubic extends F {
         this.a = a;
     }
 
-    public Cubic(double a0, double a1, double a2, double a3) {
+    Cubic(double a0, double a1, double a2, double a3) {
         this();
         a[0] = a0;
         a[1] = a1;

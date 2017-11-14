@@ -4,16 +4,15 @@ import addons.F;
 import addons.Interval;
 import addons.Parameters;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class Newton {
+class Newton {
 
     private F f;
-    private LinkedList<Double> x;
+    private LinkedList<Double> x = null;
     private LinkedList<Interval> intervals;
 
-    public Newton(F f) {
+    Newton(F f) {
         this.f = f;
         x = new LinkedList<>();
         intervals = new LinkedList<>();
@@ -26,11 +25,11 @@ public class Newton {
 //        }
     }
 
-    public int getRootsCount() {
+    int getRootsCount() {
         return intervals.size();
     }
 
-    public Interval getInterval(int no) {
+    Interval getInterval(int no) {
         return intervals.get(no);
     }
 
@@ -50,16 +49,15 @@ public class Newton {
         }
     }
 
-    public LinkedList<RootEquation> solve(int firstApprox, double epsilon) {
+    LinkedList<RootEquation> solve(int firstApprox, double epsilon) {
         LinkedList<RootEquation> arrayList = new LinkedList<>();
-        for (int i=0; i<intervals.size(); i++) {
-            //System.out.println(intervals.get(i));
-            double a = intervals.get(i).a;
-            double b = intervals.get(i).b;
-            double x0 = a + firstApprox*(b-a)/3;
+        for (Interval interval : intervals) {
+            double a = interval.a;
+            double b = interval.b;
+            double x0 = a + firstApprox * (b - a) / 3;
             double x = x0 - f.getY(x0) / f.getPrime(x0);
             int it = 0;
-            while (Math.abs( x - x0 ) > epsilon) {
+            while (Math.abs(x - x0) > epsilon) {
                 x0 = x;
                 x = x0 - f.getY(x0) / f.getPrime(x0);
                 it++;
@@ -70,9 +68,4 @@ public class Newton {
         return arrayList;
     }
 
-
-    public static void main(String[] args) {
-        Newton n = new Newton(new Function());
-
-    }
 }

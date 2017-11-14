@@ -10,44 +10,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.92" xmlns:fx="http://javafx.com/fxml/1" fx:controller="spline.SplineController">
-   <children>
-      <VBox layoutX="736.0" layoutY="5.0" prefHeight="609.0" prefWidth="100.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-         <children>
-            <Button fx:id="draw" mnemonicParsing="false" onAction="#onDraw" prefWidth="100.0" text="Draw" />
-            <TextField fx:id="coordinatesX" prefWidth="90.0" />
-            <TextField fx:id="coordinatesY" prefWidth="90.0" />
-            <TextField fx:id="parts" editable="false">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </TextField>
-            <Slider fx:id="slider" blockIncrement="1.0" majorTickUnit="5.0" max="50.0" min="2.0" minorTickCount="1" showTickMarks="true" value="6.0" />
-         </children>
-      </VBox>
-      <TabPane layoutX="14.0" layoutY="10.0" prefHeight="632.0" prefWidth="810.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Graphic">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="610.0" prefWidth="809.0">
-                     <children>
-                        <Canvas fx:id="canvas" height="600.0" onMouseMoved="#move" width="800.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab fx:id="tabG" disable="true" text="Extended task">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
-                     <children>
-                        <Canvas fx:id="canvasG" onMouseMoved="#moveG" height="590.0" layoutX="5.0" layoutY="5.0" width="790.0" />
-                     </children></AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-   </children>
-   <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-   </padding>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="670.0"
+            prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.92" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="spline.SplineController">
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+    </padding>
+    <VBox layoutX="736.0" layoutY="5.0" prefHeight="609.0" prefWidth="100.0" AnchorPane.rightAnchor="5.0"
+          AnchorPane.topAnchor="5.0">
+        <Button mnemonicParsing="false" onAction="#onDraw" prefWidth="100.0" text="Draw"/>
+        <TextField fx:id="coordinatesX" prefWidth="90.0" editable="false"/>
+        <TextField fx:id="coordinatesY" prefWidth="90.0" editable="false"/>
+        <TextField fx:id="parts" editable="false">
+            <VBox.margin>
+                <Insets top="15.0"/>
+            </VBox.margin>
+        </TextField>
+        <Slider fx:id="slider" blockIncrement="1.0" majorTickUnit="5.0" max="50.0" min="2.0" minorTickCount="1"
+                showTickMarks="true" value="6.0"/>
+    </VBox>
+    <TabPane layoutX="14.0" layoutY="10.0" prefHeight="632.0" prefWidth="810.0" tabClosingPolicy="UNAVAILABLE">
+        <Tab text="Graphic">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="610.0" prefWidth="809.0">
+                <Canvas fx:id="canvas" height="600.0" onMouseMoved="#move" width="800.0"
+                        AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+            </AnchorPane>
+        </Tab>
+        <Tab fx:id="tabG" disable="true" text="Extended task">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="800.0">
+                <Canvas fx:id="canvasG" onMouseMoved="#moveG" height="590.0" layoutX="5.0" layoutY="5.0"
+                        width="790.0"/>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
 </AnchorPane>

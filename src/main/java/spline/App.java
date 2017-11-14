@@ -9,10 +9,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         String fxmlFile = "../splines.fxml";
-
-        FXMLLoader loader = new FXMLLoader();
-
-        Parent root = (Parent) loader.load(getClass().getResource(fxmlFile));
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
         primaryStage.setTitle("Spline interpolation");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

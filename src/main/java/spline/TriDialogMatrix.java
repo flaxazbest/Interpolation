@@ -2,7 +2,7 @@ package spline;
 
 import javafx.geometry.Point2D;
 
-public class TriDialogMatrix {
+class TriDialogMatrix {
 
     private double[][] matrix;
     private int n;
@@ -49,7 +49,7 @@ public class TriDialogMatrix {
 
     }
 
-    public static Cubic[] getCoeficients(Point2D[] table) throws MatrixBuildException {
+    static Cubic[] getCoeficients(Point2D[] table) throws MatrixBuildException {
         TriDialogMatrix tdm = new TriDialogMatrix(table);
         int n = table.length;
         Cubic[] result = new Cubic[n-1];

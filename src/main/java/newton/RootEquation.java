@@ -1,11 +1,11 @@
 package newton;
 
-public class RootEquation {
+class RootEquation {
 
     double x;
     int itration;
 
-    public RootEquation(double x, int itration) {
+    RootEquation(double x, int itration) {
         this.x = x;
         this.itration = itration;
     }

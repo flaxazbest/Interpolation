@@ -14,12 +14,9 @@ import static addons.Parameters.parts;
 public class Spline3P {
 
     private Cubic[] splines;
-    private F function;
     private Point2D[] table;
-    private Matrix matrix;
 
     public Spline3P(F function) {
-        this.function = function;
         table = new Point2D[parts+1];
         double h = (B - A) / parts;
         for (int i=0; i<=parts; i++) {

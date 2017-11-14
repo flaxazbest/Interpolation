@@ -1,4 +1,4 @@
 package spline;
 
-public class WrongCoeficientException extends Exception {
+class WrongCoeficientException extends Exception {
 }

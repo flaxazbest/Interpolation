@@ -5,7 +5,6 @@ import addons.Interval;
 import addons.Parameters;
 import addons.Window;
 import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -22,7 +21,6 @@ public class SplineController {
     private Window wG;
     private F f;
     private GraphicsContext gc;
-    private GraphicsContext gcG;
     private Point2D pp;
 
     @FXML
@@ -45,19 +43,19 @@ public class SplineController {
     @FXML
     Tab tabG;
 
-    public void onDraw(ActionEvent actionEvent) {
+    public void onDraw() {
         gc = canvas.getGraphicsContext2D();
         gc.setFill(Parameters.background);
         gc.fillRect(0,0,w.getW(), w.getH());
         f.draw(gc, w, Parameters.A, Parameters.B, Color.LIGHTGREEN, 3);
 
         int n = (int)slider.getValue() + 1;
-//        SplineC s = new SplineC(f, Parameters.parts+1);
         SplineC s = new SplineC(f, n);
         s.drawVerticalLines(gc, w);
         s.draw(gc, w);
 
         tabG.setDisable(false);
+        GraphicsContext gcG;
         gcG = canvasG.getGraphicsContext2D();
         wG = new Window(Parameters.A, Parameters.B, -6.00, 5.5, (int)canvasG.getWidth(), (int)canvasG.getHeight());
         gcG.setFill(Color.DARKGREY);
@@ -67,7 +65,6 @@ public class SplineController {
         s.drawSplines1(gcG, wG);
         s.drawSplines2(gcG, wG);
         s.drawSplines3(gcG, wG);
-
 
     }
 

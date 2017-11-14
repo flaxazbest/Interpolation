@@ -12,14 +12,12 @@ import static addons.Parameters.*;
 public class SplineC {
 
     private Cubic[] splines;
-    private F function;
     private Point2D[] table;
     private int n;
 
     private double[] b;
 
-    public SplineC(F function, int n) {
-        this.function = function;
+    SplineC(F function, int n) {
         this.n = n;
 
         table = new Point2D[n];
@@ -140,7 +138,7 @@ public class SplineC {
         }
     }
 
-    public void drawVerticalLines(GraphicsContext gc, Window w) {
+    void drawVerticalLines(GraphicsContext gc, Window w) {
         gc.setStroke(colors[7]);
         gc.setLineWidth(1);
         gc.setLineDashes(10);
@@ -152,7 +150,7 @@ public class SplineC {
         gc.setLineDashes(0);
     }
 
-    public void drawSplines1(GraphicsContext gc, Window w) {
+    void drawSplines1(GraphicsContext gc, Window w) {
         for (int i=0; i<n-1; i++) {
             splines[i].getPrime().draw(gc, w, table[i].getX(), table[i+1].getX(), Color.LIGHTGREEN, 2);
         }
@@ -171,7 +169,7 @@ public class SplineC {
 
     }
 
-    public void drawSplines2(GraphicsContext gc, Window w) {
+    void drawSplines2(GraphicsContext gc, Window w) {
         for (int i=0; i<n-1; i++) {
             splines[i].getPrime().getPrime().draw(gc, w, table[i].getX(), table[i+1].getX(), Color.LIGHTBLUE, 2);
         }
@@ -187,7 +185,7 @@ public class SplineC {
                 Parameters.pointRadius, Parameters.pointRadius);
     }
 
-    public void drawSplines3(GraphicsContext gc, Window w) {
+    void drawSplines3(GraphicsContext gc, Window w) {
         for (int i=0; i<n-1; i++) {
             splines[i].getPrime().getPrime().getPrime().draw(gc, w, table[i].getX(), table[i+1].getX(), Color.LIGHTCORAL, 2);
         }

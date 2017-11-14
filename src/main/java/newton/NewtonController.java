@@ -20,7 +20,7 @@ import java.util.LinkedList;
 
 public class NewtonController {
 
-    Window w = null;
+    private Window w = null;
 
     @FXML
     Canvas canvas;
@@ -37,10 +37,7 @@ public class NewtonController {
     @FXML
     GridPane gridPane;
 
-    @FXML
-    BarChart<Integer, Integer> eps3;
-
-    public void calc(ActionEvent actionEvent) {
+    public void calc() {
 
         final int CHARTS = 5;
         final double[] eps = {1e-3, 1e-4, 1e-5, 1e-6, 1e-12};
@@ -55,7 +52,7 @@ public class NewtonController {
         }
         final BarChart<String, Number>[] bc = new BarChart[CHARTS];
         for (int i=0;i<CHARTS;i++)
-            bc[i] = new BarChart<String, Number>(xAxis[i], yAxis[i]);
+            bc[i] = new BarChart<>(xAxis[i], yAxis[i]);
 
         Function f = new Function();
         Interval dy = f.getMinMaxY(new Interval(Parameters.I.a, Parameters.I.b));

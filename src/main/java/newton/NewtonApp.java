@@ -10,8 +10,7 @@ public class NewtonApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         String fxmlFile = "../newton.fxml";
-        FXMLLoader loader = new FXMLLoader();
-        Parent root = (Parent) loader.load(getClass().getResource(fxmlFile));
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
         primaryStage.setTitle("Solve equation");
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
