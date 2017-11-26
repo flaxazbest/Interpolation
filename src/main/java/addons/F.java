@@ -77,8 +77,9 @@ public abstract class F {
             point = new Point2D(i,0);
             x = window.screenToReal(point).getX();
             y = getY(x);
-            ePoint = window.realToScreen(new Point2D(x, y));
-            if (!(String.valueOf(sPoint.getY()).equals("NaN") || y == POSITIVE_INFINITY || y == NEGATIVE_INFINITY)) {
+//            if (!(String.valueOf(sPoint.getY()).equals("NaN") || y == POSITIVE_INFINITY || y == NEGATIVE_INFINITY)) {
+            if (!(String.valueOf(y).equals("NaN") || y == POSITIVE_INFINITY || y == NEGATIVE_INFINITY)) {
+                ePoint = window.realToScreen(new Point2D(x, y));
                 gc.strokeLine(sPoint.getX(), sPoint.getY(), ePoint.getX(), ePoint.getY());
                 sPoint = ePoint;
             }

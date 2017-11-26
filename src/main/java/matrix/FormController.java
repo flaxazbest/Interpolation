@@ -24,9 +24,5 @@ public class FormController {
     }
 
     public void initialize() {
-
-
-
-
     }
 }
