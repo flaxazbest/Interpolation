@@ -185,7 +185,7 @@ public class Prime {
             System.out.printf("\n%6.3f  |", y);
             for (i=0; i<=Nx; i++) {
                 DapproxX[i][j] = (
-                        tU.getUindex(i+1, j+1)
+                                  tU.getUindex(i+1, j+1)
                                 - tU.getUindex(i-1, j+1)
                                 + tU.getUindex(i+1, j-1)
                                 - tU.getUindex(i-1, j-1)
@@ -213,7 +213,7 @@ public class Prime {
             System.out.printf("\n%6.3f  |", y);
             for (i=0; i<=Nx; i++) {
                 DapproxY[i][j] = (
-                        tU.getUindex(i+1, j+1)
+                                  tU.getUindex(i+1, j+1)
                                 - tU.getUindex(i+1, j-1)
                                 + tU.getUindex(i-1, j+1)
                                 - tU.getUindex(i-1, j-1)

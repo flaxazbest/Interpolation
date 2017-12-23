@@ -80,11 +80,11 @@ public class YesNoRadioButtonHorPanel extends RadioButtonPanel implements YesNoR
     protected List<JRadioButton> createButtons() {
         List<JRadioButton> buttons = new ArrayList<JRadioButton>();
 
-        optYes = new JRadioButton("Yes");
+        optYes = new JRadioButton("Так");
         optYes.setBounds(0, 0, 60, 20);
         buttons.add(optYes);
 
-        optNo = new JRadioButton("No");
+        optNo = new JRadioButton("Ні");
         optNo.setBounds(55, 0, 60, 20);
         buttons.add(optNo);
 

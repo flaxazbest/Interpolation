@@ -153,7 +153,7 @@ public class MeshControlPanel extends JPanel {
 
         JPanel panelControl = new JPanel(new ListLayout());
         this.add(panelControl);
-        panelControl.add(new LabeledRowComponent(showOrientationcross, "Орієнтація"));
+        panelControl.add(new LabeledRowComponent(showOrientationcross, "Осі"));
         panelControl.add(new LabeledRowComponent(interpolateValues, "Інтерполювати"));
 
         panelControl.add(new LabeledRowComponent(dynamicWalls, "Динамічнмй фон"));

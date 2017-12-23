@@ -52,35 +52,24 @@ public class StarterFrame extends JFrame {
 
     private List<Point3D> getPointsForGauss() {
         List<Point3D> result = new ArrayList<Point3D>();
-        /*for (double x = -3.0; x <= 3.0; x = x + 0.20) {
-            for (double y = -3.0; y <= 3.0; y = y + 0.20) {
-                result.add(new Point3D(x, calculatePDF(x, y), y));
-            }
-        }*/
-
         Prime prime = new Prime();
 
 
         for (int j=0; j<=prime.getNy(); j++) {
             for (int i=0; i<=prime.getNx(); i++) {
-                result.add(new Point3D(prime.getX()[i], prime.getTableU()[i][j], prime.getY()[j]));
+//                result.add(new Point3D(prime.getX()[i], prime.getTableU()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDstarX()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDstarY()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDapproxX()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDapproxY()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDanaliticX()[i][j], prime.getY()[j]));
-//                result.add(new Point3D(prime.getX()[i], prime.getDanaliticY()[i][j], prime.getY()[j]));
+                result.add(new Point3D(prime.getX()[i], prime.getDanaliticY()[i][j], prime.getY()[j]));
             }
         }
         return result;
     }
 
     private double calculatePDF(double x, double y) {
-        /*double c = Math.pow(x - meanX, 2.0) / (sdX * sdX);
-        double d = Math.pow(y - meanY, 2.0) / (sdY * sdY);
-        double e = -2.0 * p * (x * meanX) * (y * meanY) / (sdX * sdY);
-
-        return a * Math.exp(b * (c + d + e));*/
         return sin(x) + cos(y);
     }
 
