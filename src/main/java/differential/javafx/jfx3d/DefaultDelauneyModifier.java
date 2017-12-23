@@ -1,13 +1,8 @@
-package de.adihubba.javafx.jfx3d;
-
+package differential.javafx.jfx3d;
 
 import javafx.geometry.Point3D;
-import de.adihubba.delauney.Point;
+import differential.delauney.Point;
 
-
-/**
- * Default DelauneyModifier which just converts the points without modification of the axis
- */
 public class DefaultDelauneyModifier implements DelauneyModifier {
 
     @Override

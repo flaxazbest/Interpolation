@@ -1,4 +1,4 @@
-package de.adihubba.javafx.jfx3d;
+package differential.javafx.jfx3d;
 
 
 import javafx.geometry.Point3D;

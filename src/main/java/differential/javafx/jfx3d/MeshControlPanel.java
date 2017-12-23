@@ -1,4 +1,4 @@
-package de.adihubba.javafx.jfx3d;
+package differential.javafx.jfx3d;
 
 
 import java.awt.Dimension;
@@ -8,10 +8,10 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import de.adihubba.swing.JBasicFormattedLabel;
-import de.adihubba.swing.ListLayout;
-import de.adihubba.swing.ValueChangedListener;
-import de.adihubba.swing.radiobutton.YesNoRadioButtonHorPanel;
+import differential.swing.JBasicFormattedLabel;
+import differential.swing.ListLayout;
+import differential.swing.ValueChangedListener;
+import differential.swing.radiobutton.YesNoRadioButtonHorPanel;
 import javafx.scene.shape.DrawMode;
 
 
@@ -153,21 +153,21 @@ public class MeshControlPanel extends JPanel {
 
         JPanel panelControl = new JPanel(new ListLayout());
         this.add(panelControl);
-        panelControl.add(new LabeledRowComponent(showOrientationcross, "ShowOrientation"));
-        panelControl.add(new LabeledRowComponent(interpolateValues, "InterpolateValues"));
+        panelControl.add(new LabeledRowComponent(showOrientationcross, "Орієнтація"));
+        panelControl.add(new LabeledRowComponent(interpolateValues, "Інтерполювати"));
 
-        panelControl.add(new LabeledRowComponent(dynamicWalls, "Dynamic walls"));
-        panelControl.add(new LabeledRowComponent(new JPanel(), "Show wall"));
-        panelControl.add(new LabeledRowComponent(showLeftWall, " - left"));
-        panelControl.add(new LabeledRowComponent(showRightWall, " - right"));
-        panelControl.add(new LabeledRowComponent(showTopWall, " - top"));
-        panelControl.add(new LabeledRowComponent(showBottomWall, " - bottom"));
-        panelControl.add(new LabeledRowComponent(showFrontWall, " - front"));
-        panelControl.add(new LabeledRowComponent(showBackWall, " - back"));
+        panelControl.add(new LabeledRowComponent(dynamicWalls, "Динамічнмй фон"));
+        panelControl.add(new LabeledRowComponent(new JPanel(), "Показувати фон"));
+        panelControl.add(new LabeledRowComponent(showLeftWall, " - лівий"));
+        panelControl.add(new LabeledRowComponent(showRightWall, " - правий"));
+        panelControl.add(new LabeledRowComponent(showTopWall, " - верхній"));
+        panelControl.add(new LabeledRowComponent(showBottomWall, " - нижній"));
+        panelControl.add(new LabeledRowComponent(showFrontWall, " - передній"));
+        panelControl.add(new LabeledRowComponent(showBackWall, " - задній"));
 
         JPanel pnlClickedValue = new JPanel(new ListLayout());
         pnlClickedValue.setPreferredSize(new Dimension(210, 70));
-        pnlClickedValue.setBorder(BorderFactory.createTitledBorder("Selected point"));
+        pnlClickedValue.setBorder(BorderFactory.createTitledBorder("Точка"));
         this.add(pnlClickedValue);
         pnlClickedValue.add(new LabeledRowComponent(txtX, lblX));
         pnlClickedValue.add(new LabeledRowComponent(txtY, lblY));

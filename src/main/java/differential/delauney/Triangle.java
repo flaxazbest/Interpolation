@@ -1,4 +1,4 @@
-package de.adihubba.delauney;
+package differential.delauney;
 
 import java.io.Serializable;
 

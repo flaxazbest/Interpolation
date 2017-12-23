@@ -1,4 +1,4 @@
-package de.adihubba.swing;
+package differential.swing;
 
 
 import java.awt.Component;
@@ -9,7 +9,7 @@ import java.awt.LayoutManager2;
 
 import javax.swing.SwingConstants;
 
-import de.adihubba.ObjectUtils;
+import differential.ObjectUtils;
 
 
 /**

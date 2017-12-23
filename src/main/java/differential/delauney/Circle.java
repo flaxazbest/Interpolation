@@ -1,4 +1,4 @@
-package differential.delauney.delauney;
+package differential.delauney;
 
 import java.io.Serializable;
 

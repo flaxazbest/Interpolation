@@ -1,15 +1,10 @@
-package de.adihubba.javafx.jfx3d;
-
+package differential.javafx.jfx3d;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 
-
-/**
- * Help for orientation during development 
- */
 public class AxisOrientation extends Group {
 
     public AxisOrientation(int size) {

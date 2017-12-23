@@ -1,7 +1,7 @@
-package de.adihubba.javafx.jfx3d;
+package differential.javafx.jfx3d;
 
 
-import de.adihubba.ObjectUtils;
+import differential.ObjectUtils;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;

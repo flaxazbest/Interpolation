@@ -1,4 +1,4 @@
-package de.adihubba.delauney;
+package differential.delauney;
 
 @SuppressWarnings("serial")
 public class UnsupportedFormatException extends RuntimeException {

@@ -1,4 +1,4 @@
-package de.adihubba.swing.radiobutton;
+package differential.swing.radiobutton;
 
 
 /**

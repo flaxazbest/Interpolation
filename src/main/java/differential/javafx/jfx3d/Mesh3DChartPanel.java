@@ -1,4 +1,4 @@
-package de.adihubba.javafx.jfx3d;
+package differential.javafx.jfx3d;
 
 
 import java.awt.BorderLayout;
@@ -30,10 +30,10 @@ import javafx.scene.transform.Rotate;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import de.adihubba.delauney.DelaunayTriangulation;
-import de.adihubba.delauney.Point;
-import de.adihubba.delauney.Triangle;
-import de.adihubba.ObjectUtils;
+import differential.delauney.DelaunayTriangulation;
+import differential.delauney.Point;
+import differential.delauney.Triangle;
+import differential.ObjectUtils;
 
 
 /**
@@ -149,7 +149,7 @@ public class Mesh3DChartPanel extends JPanel {
         }
     }
 
-    public void setDelauneyModifier(de.adihubba.swing.StarterFrame.MyDelauneyModifier delauneyModifier) {
+    public void setDelauneyModifier(differential.swing.StarterFrame.MyDelauneyModifier delauneyModifier) {
         this.delauneyModifier = delauneyModifier;
     }
 

@@ -1,4 +1,4 @@
-package de.adihubba.swing;
+package differential.swing;
 
 
 import java.util.ArrayList;
@@ -6,9 +6,9 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
-import de.adihubba.delauney.Point;
-import de.adihubba.javafx.jfx3d.DelauneyModifier;
-import de.adihubba.javafx.jfx3d.Mesh3DChartPanel;
+import differential.delauney.Point;
+import differential.javafx.jfx3d.DelauneyModifier;
+import differential.javafx.jfx3d.Mesh3DChartPanel;
 import differential.Prime;
 import javafx.geometry.Point3D;
 
@@ -63,11 +63,13 @@ public class StarterFrame extends JFrame {
 
         for (int j=0; j<=prime.getNy(); j++) {
             for (int i=0; i<=prime.getNx(); i++) {
-//                result.add(new Point3D(prime.getX()[i], prime.getTableU()[i][j], prime.getY()[j]));
+                result.add(new Point3D(prime.getX()[i], prime.getTableU()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDstarX()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDstarY()[i][j], prime.getY()[j]));
 //                result.add(new Point3D(prime.getX()[i], prime.getDapproxX()[i][j], prime.getY()[j]));
-                result.add(new Point3D(prime.getX()[i], prime.getDapproxY()[i][j], prime.getY()[j]));
+//                result.add(new Point3D(prime.getX()[i], prime.getDapproxY()[i][j], prime.getY()[j]));
+//                result.add(new Point3D(prime.getX()[i], prime.getDanaliticX()[i][j], prime.getY()[j]));
+//                result.add(new Point3D(prime.getX()[i], prime.getDanaliticY()[i][j], prime.getY()[j]));
             }
         }
         return result;

@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.Vector;
 
-import de.adihubba.ObjectUtils;
+import differential.ObjectUtils;
 
 public class DelaunayTriangulation {
 

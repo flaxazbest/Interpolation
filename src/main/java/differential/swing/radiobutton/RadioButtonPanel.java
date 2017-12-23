@@ -1,4 +1,4 @@
-package de.adihubba.swing.radiobutton;
+package differential.swing.radiobutton;
 
 import java.awt.event.ActionListener;
 import java.util.HashSet;
@@ -11,9 +11,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
-import de.adihubba.ObjectUtils;
-import de.adihubba.swing.ListLayout;
-import de.adihubba.swing.ValueChangedListener;
+import differential.ObjectUtils;
+import differential.swing.ListLayout;
+import differential.swing.ValueChangedListener;
 
 
 /**

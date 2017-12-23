@@ -1,9 +1,7 @@
-package de.adihubba.swing;
-
+package differential.swing;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-
 
 public class JBasicFormattedLabel extends JLabel {
 

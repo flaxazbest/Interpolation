@@ -1,15 +1,10 @@
-package de.adihubba.javafx.jfx3d;
-
+package differential.javafx.jfx3d;
 
 import java.util.function.Consumer;
 
 import javafx.scene.Group;
 import javafx.scene.transform.Rotate;
 
-
-/**
- * A cube consisting of six walls
- */
 public class Cube extends Group {
 
     private final Wall front;
