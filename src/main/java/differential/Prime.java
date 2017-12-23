@@ -28,6 +28,14 @@ public class Prime {
     double[] X = new double[Nx+1];
     double[] Y = new double[Ny+1];
 
+    public int getNx() {
+        return Nx;
+    }
+
+    public int getNy() {
+        return Ny;
+    }
+
     public double[][] getTableU() {
         return tableU;
     }

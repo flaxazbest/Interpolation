@@ -149,7 +149,7 @@ public class Mesh3DChartPanel extends JPanel {
         }
     }
 
-    public void setDelauneyModifier(DelauneyModifier delauneyModifier) {
+    public void setDelauneyModifier(de.adihubba.swing.StarterFrame.MyDelauneyModifier delauneyModifier) {
         this.delauneyModifier = delauneyModifier;
     }
 

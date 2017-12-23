@@ -1,15 +1,7 @@
-package de.adihubba.delauney;
+package differential.delauney;
 
 import java.io.Serializable;
 
-/**
- * Created by IntelliJ IDEA. User: Aviad Segev Date: 22/11/2009 Time: 20:29:56
- * BoundingBox represents a horizontal bounding rectangle defined by its lower
- * left and upper right point. This is usually used as a rough approximation
- * of@SuppressWarnings("serial")
- * 
- * the bounded geometry
- */
 @SuppressWarnings("serial")
 public class BoundingBox implements Serializable {
 	/**

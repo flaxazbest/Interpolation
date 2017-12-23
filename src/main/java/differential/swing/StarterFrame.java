@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import de.adihubba.delauney.Point;
 import de.adihubba.javafx.jfx3d.DelauneyModifier;
 import de.adihubba.javafx.jfx3d.Mesh3DChartPanel;
+import differential.Prime;
 import javafx.geometry.Point3D;
 
 import static java.lang.Math.cos;
@@ -39,8 +40,8 @@ public class StarterFrame extends JFrame {
         final Mesh3DChartPanel chart = new Mesh3DChartPanel();
         chart.setDelauneyModifier(new MyDelauneyModifier());
         chart.setAxisTitleX("X-Axis");
-        chart.setAxisTitleY("Y-Axis");
-        chart.setAxisTitleZ("Z-Axis");
+        chart.setAxisTitleY("Z-Axis");
+        chart.setAxisTitleZ("Y-Axis");
         chart.addMeshControlPanel();
         chart.showMeshPanel(getPointsForGauss());
 
@@ -51,9 +52,22 @@ public class StarterFrame extends JFrame {
 
     private List<Point3D> getPointsForGauss() {
         List<Point3D> result = new ArrayList<Point3D>();
-        for (double x = -3.0; x <= 3.0; x = x + 0.20) {
+        /*for (double x = -3.0; x <= 3.0; x = x + 0.20) {
             for (double y = -3.0; y <= 3.0; y = y + 0.20) {
                 result.add(new Point3D(x, calculatePDF(x, y), y));
+            }
+        }*/
+
+        Prime prime = new Prime();
+
+
+        for (int j=0; j<=prime.getNy(); j++) {
+            for (int i=0; i<=prime.getNx(); i++) {
+//                result.add(new Point3D(prime.getX()[i], prime.getTableU()[i][j], prime.getY()[j]));
+//                result.add(new Point3D(prime.getX()[i], prime.getDstarX()[i][j], prime.getY()[j]));
+//                result.add(new Point3D(prime.getX()[i], prime.getDstarY()[i][j], prime.getY()[j]));
+//                result.add(new Point3D(prime.getX()[i], prime.getDapproxX()[i][j], prime.getY()[j]));
+                result.add(new Point3D(prime.getX()[i], prime.getDapproxY()[i][j], prime.getY()[j]));
             }
         }
         return result;

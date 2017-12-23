@@ -1,4 +1,4 @@
-package de.adihubba.delauney;
+package differential.delauney;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,37 +11,6 @@ import java.util.Vector;
 
 import de.adihubba.ObjectUtils;
 
-/**
- * 
- * This class represents a Delaunay Triangulation. The class was written for a
- * large scale triangulation (1000 - 200,000 vertices). The application main use
- * is 3D surface (terrain) presentation. <br>
- * The class main properties are the following:<br>
- * - fast point location. (O(n^0.5)), practical runtime is often very fast. <br>
- * - handles degenerate cases and none general position input (ignores duplicate
- * points). <br>
- * - save & load from\to text file in TSIN format. <br>
- * - 3D support: including z value approximation. <br>
- * - standard java (1.5 generic) iterators for the vertices and triangles. <br>
- * - smart iterator to only the updated triangles - for terrain simplification <br>
- * <br>
- * 
- * Testing (done in early 2005): Platform java 1.5.02 windows XP (SP2), AMD
- * laptop 1.6G sempron CPU 512MB RAM. Constructing a triangulation of 100,000
- * vertices takes ~ 10 seconds. point location of 100,000 points on a
- * triangulation of 100,000 vertices takes ~ 5 seconds.
- * 
- * Note: constructing a triangulation with 200,000 vertices and more requires
- * extending java heap size (otherwise an exception will be thrown).<br>
- * 
- * Bugs: if U find a bug or U have an idea as for how to improve the code,
- * please send me an email to: benmo@ariel.ac.il
- * 
- * @author Boaz Ben Moshe 5/11/05 <br>
- *         The project uses some ideas presented in the VoroGuide project,
- *         written by Klasse f?r Kreise (1996-1997), For the original applet
- *         see: http://www.pi6.fernuni-hagen.de/GeomLab/VoroGlide/ . <br>
- */
 public class DelaunayTriangulation {
 
 	// the first and last points (used only for first step construction)

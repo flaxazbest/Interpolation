@@ -1,15 +1,7 @@
-package de.adihubba.delauney;
+package differential.delauney.delauney;
 
 import java.io.Serializable;
 
-/**
- * this class represents a simple circle. <br />
- * it is used by the Delaunay Triangulation class. <br />
- * <br />
- * note that this class is immutable.
- * 
- * @see DelaunayTriangulation
- */
 @SuppressWarnings("serial")
 public class Circle implements Serializable {
 

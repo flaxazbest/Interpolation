@@ -1,11 +1,7 @@
-package de.adihubba.delauney;
+package differential.delauney;
 
 import java.io.Serializable;
 
-/**
- * This class represents a 3D point, with some simple geometric methods
- * (pointLineTest).
- */
 public class Point implements Comparable<Point>, Serializable {
 	private double x, y, z;
 

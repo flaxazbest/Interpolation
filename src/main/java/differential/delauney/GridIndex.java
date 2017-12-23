@@ -1,32 +1,7 @@
-package de.adihubba.delauney;
+package differential.delauney;
 
 import java.util.Iterator;
 
-/**
- * Created by IntelliJ IDEA. User: Aviad Segev Date: 22/11/2009 Time: 20:10:04
- * 
- * Grid Index is a simple spatial index for fast point/triangle location. The
- * idea is to divide a predefined geographic extent into equal sized cell matrix
- * (tiles). Every cell will be associated with a triangle which lies inside.
- * Therfore, one can easily locate a triangle in close proximity of the required
- * point by searching from the point's cell triangle. If the triangulation is
- * more or less uniform and bound in space, this index is very effective,
- * roughly recuing the searched triangles by square(xCellCount * yCellCount), as
- * only the triangles inside the cell are searched.
- * 
- * The index takes xCellCount * yCellCount capacity. While more cells allow
- * faster searches, even a small grid is helpfull.
- * 
- * This implementation holds the cells in a memory matrix, but such a grid can
- * be easily mapped to a DB table or file where it is usually used for it's
- * fullest.
- * 
- * Note that the index is geographically bound - only the region given in the
- * c'tor is indexed. Added Triangles outside the indexed region will cause
- * rebuilding of the whole index. Since triangulation is mostly always used for
- * static raster data, and usually is never updated outside the initial zone
- * (only refininf existing triangles) this is never an issue in real life.
- */
 public class GridIndex {
 	/**
 	 * The triangulation of the index
